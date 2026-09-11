@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Trabajo 1 - Continentes</title>
+</head>
+<body>
+    <h1>Información de Continentes</h1>
+    <table border="1">
+        <tr>
+            <th>Nombre</th>
+            <th>Clima</th>
+            <th>Curiosidad</th>
+        </tr>
+        <!-- Iteración polimórfica mostrando los mensajes de los métodos heredados -->
+        <tr th:each="cont : ${continentes}">
+            <td th:text="${cont.obtenerNombre(cont.region)}"></td>
+            <td th:text="${cont.describirClima(cont.region)}"></td>
+            <td th:text="${cont.mencionarCuriosidad(cont.region)}"></td>
+        </tr>
+    </table>
+</body>
+</html>
