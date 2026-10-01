@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Trabajo 2 - Programación Funcional</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f6f9; }
+        .card { background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h1 { color: #333; }
+        ul { margin-top: 20px; }
+        li { margin-bottom: 10px; }
+        a { color: #007bff; text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1 th:text="${titulo}">Trabajo 2 - Continentes</h1>
+        <hr>
+        <p><strong>Resultado de la consulta:</strong></p>
+        <p th:text="${resultado}"></p>
+        <hr>
+        <h3>Navegar por las 5 peticiones:</h3>
+        <ul>
+            <li><a href="/peticion1">Petición 1 (Nombres separados por coma)</a></li>
+            <li><a href="/peticion2">Petición 2 (Estadísticas con IntSummaryStatistics)</a></li>
+            <li><a href="/peticion3">Petición 3 (Lista de atributo String)</a></li>
+            <li><a href="/peticion4">Petición 4 (anyMatch y noneMatch)</a></li>
+            <li><a href="/peticion5">Petición 5 (Objeto con el valor máximo)</a></li>
+        </ul>
+    </div>
+</body>
+</html>
