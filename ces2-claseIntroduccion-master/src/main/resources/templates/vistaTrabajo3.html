@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Trabajo #3 CES2 - Sara Milena Restrepo</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 30px; background-color: #f8f9fa; color: #333; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; margin-top: 0; }
+        
+        /* Botones de Navegación */
+        .nav-buttons { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tab-btn { flex: 1; padding: 12px; border: none; background: #e0e0e0; color: #333; font-size: 15px; font-weight: bold; cursor: pointer; border-radius: 5px; transition: 0.3s; }
+        .tab-btn.active { background: #3498db; color: white; }
+        .tab-btn:hover { background: #2980b9; color: white; }
+        
+        /* Secciones de contenido */
+        .tab-content { display: none; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background: #fff; }
+        .tab-content.active { display: block; }
+        
+        ul { line-height: 1.8; }
+        .card { background: #eef7fc; padding: 15px; border-left: 5px solid #3498db; margin-top: 10px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Trabajo #3 CES2 - Tema Continentes</h1>
+    <p><strong>Estudiante:</strong> Sara Milena Restrepo Ramírez</p>
+
+    <!-- Botones interactivos para cambiar entre puntos -->
+    <div class="nav-buttons">
+        <button class="tab-btn active" onclick="mostrarPunto('punto2', this)">Punto 2: Iteradores</button>
+        <button class="tab-btn" onclick="mostrarPunto('punto3', this)">Punto 3: Prog. Funcional</button>
+        <button class="tab-btn" onclick="mostrarPunto('punto4y5', this)">Puntos 4 y 5: Function & verTotales</button>
+    </div>
+
+    <!-- PUNTO 2 -->
+    <div id="punto2" class="tab-content active">
+        <h2>Punto 2: Recorrido con ListIterator e Iterator</h2>
+        
+        <h3>1. Recorrido con ListIterator (Stack de Regiones):</h3>
+        <ul>
+            <li th:each="item : ${listaStackOutput}" th:text="${item}"></li>
+        </ul>
+
+        <h3>2. Recorrido con Iterator (Deque del Territorio):</h3>
+        <ul>
+            <li th:each="item : ${listaDequeOutput}" th:text="${item}"></li>
+        </ul>
+    </div>
+
+    <!-- PUNTO 3 -->
+    <div id="punto3" class="tab-content">
+        <h2>Punto 3: Filtrado en Deque con Programación Funcional</h2>
+        <p>Conversión efectuada con: <code>Deque&lt;Region&gt; deque = new ArrayDeque&lt;&gt;(T);</code></p>
+        <p><strong>Objetos filtrados por el enum EnumRegion.ASIA:</strong></p>
+        <ul>
+            <li th:each="item : ${resultadoFiltrado}" th:text="${item}"></li>
+        </ul>
+    </div>
+
+    <!-- PUNTOS 4 Y 5 -->
+    <div id="punto4y5" class="tab-content">
+        <h2>Puntos 4 y 5: Interface Function&lt;T, R&gt; y verTotales()</h2>
+        
+        <div class="card">
+            <p><strong>Objeto evaluado:</strong> <span th:text="${nombreRegion}"></span></p>
+            <p><strong>Stack 'conteo' (números guardados):</strong> <span th:text="${elementosConteo}"></span></p>
+            <hr>
+            <p><strong>Punto 4 (Suma mediante Function&lt;Region, Integer&gt;):</strong> <span th:text="${sumaDirecta}"></span></p>
+            <p><strong>Punto 5 (Suma mediante el método verTotales()):</strong> <span th:text="${totalVerTotales}"></span></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function mostrarPunto(idPunto, boton) {
+        // Ocultar todas las secciones
+        var contenidos = document.querySelectorAll('.tab-content');
+        contenidos.forEach(function(c) { c.classList.remove('active'); });
+
+        // Desactivar todos los botones
+        var botones = document.querySelectorAll('.tab-btn');
+        botones.forEach(function(b) { b.classList.remove('active'); });
+
+        // Mostrar la sección seleccionada y activar su botón
+        document.getElementById(idPunto).classList.add('active');
+        boton.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
